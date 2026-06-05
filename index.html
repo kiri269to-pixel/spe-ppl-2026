@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SPE–PPL Technical Symposium & Energy Summit 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --navy-mid: #112240;
+    --navy-light: #1a3057;
+    --gold: #c9a84c;
+    --gold-light: #e8c96d;
+    --gold-dim: #9a7a35;
+    --cream: #f5f0e8;
+    --white: #ffffff;
+    --text-muted: #8899aa;
+    --border: rgba(201,168,76,0.25);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--navy); color: var(--white); overflow-x: hidden; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 1000;
+    background: rgba(10,22,40,0.92); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 64px;
+  }
+  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 2px; color: var(--gold); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta { background: var(--gold); color: var(--navy) !important; padding: 8px 20px; border-radius: 2px; font-weight: 600 !important; }
+  .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
+
+  /* ── HERO ── */
+  #hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding-top: 64px; }
+  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 60%), radial-gradient(ellipse 60% 80% at 80% 50%, rgba(17,34,64,0.9) 0%, transparent 70%), linear-gradient(180deg, #0a1628 0%, #0d1e38 50%, #0a1628 100%); }
+  .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px); background-size: 60px 60px; }
+  .hero-orb { position: absolute; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%); top: 50%; left: 50%; transform: translate(-50%, -60%); animation: pulse 4s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { transform: translate(-50%,-60%) scale(1); opacity:0.6; } 50% { transform: translate(-50%,-60%) scale(1.1); opacity:1; } }
+  .hero-content { position: relative; z-index: 2; text-align: center; max-width: 900px; padding: 40px 24px; animation: fadeUp 1s ease both; }
+  @keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+  .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(201,168,76,0.1); border: 1px solid var(--border); color: var(--gold); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; padding: 6px 16px; border-radius: 2px; margin-bottom: 28px; animation: fadeUp 1s ease 0.1s both; }
+  .hero-badge::before { content: '◆'; font-size: 0.6em; }
+  .hero-org { font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; animation: fadeUp 1s ease 0.2s both; }
+  .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 7vw, 6rem); font-weight: 300; line-height: 1.05; color: var(--white); margin-bottom: 8px; animation: fadeUp 1s ease 0.3s both; }
+  .hero-title em { font-style: italic; color: var(--gold); }
+  .hero-year { font-family: 'Bebas Neue', sans-serif; font-size: clamp(5rem, 15vw, 12rem); letter-spacing: 0.05em; line-height: 0.85; color: transparent; -webkit-text-stroke: 1px rgba(201,168,76,0.3); display: block; margin-bottom: 24px; animation: fadeUp 1s ease 0.35s both; }
+  .hero-tagline { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.2rem; color: var(--text-muted); margin-bottom: 40px; animation: fadeUp 1s ease 0.4s both; }
+  .hero-meta { display: flex; align-items: center; justify-content: center; gap: 32px; flex-wrap: wrap; margin-bottom: 48px; animation: fadeUp 1s ease 0.5s both; }
+  .hero-meta-item { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: var(--cream); }
+  .hero-meta-item svg { color: var(--gold); flex-shrink: 0; }
+  .hero-meta-sep { color: var(--border); }
+  .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; animation: fadeUp 1s ease 0.6s both; }
+  .btn-primary { background: var(--gold); color: var(--navy); padding: 14px 36px; font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.05em; text-transform: uppercase; border: none; cursor: pointer; border-radius: 2px; text-decoration: none; transition: background 0.2s, transform 0.2s; display: inline-block; }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-outline { background: transparent; color: var(--gold); padding: 13px 36px; font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.05em; text-transform: uppercase; border: 1px solid var(--gold); cursor: pointer; border-radius: 2px; text-decoration: none; transition: background 0.2s, transform 0.2s; display: inline-block; }
+  .btn-outline:hover { background: rgba(201,168,76,0.1); transform: translateY(-2px); }
+
+  /* ── SECTIONS ── */
+  section { padding: 100px 24px; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+  .section-label::after { content: ''; flex: 1; max-width: 60px; height: 1px; background: var(--gold-dim); }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300; line-height: 1.15; margin-bottom: 48px; }
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  /* ── ABOUT ── */
+  #about { background: var(--navy-mid); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .about-text p { color: rgba(255,255,255,0.75); line-height: 1.85; font-size: 1rem; margin-bottom: 20px; }
+  .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .stat-box { background: var(--navy); padding: 32px 28px; border: 1px solid var(--border); text-align: center; transition: border-color 0.3s; }
+  .stat-box:hover { border-color: var(--gold); }
+  .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; color: var(--gold); line-height: 1; display: block; }
+  .stat-label { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-top: 6px; }
+
+  /* ── SCHEDULE ── */
+  #schedule { background: var(--navy); }
+  .day-tabs { display: flex; gap: 0; margin-bottom: 40px; border: 1px solid var(--border); border-radius: 2px; overflow: hidden; width: fit-content; }
+  .day-tab { padding: 12px 32px; background: transparent; border: none; color: var(--text-muted); font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: background 0.2s, color 0.2s; }
+  .day-tab.active { background: var(--gold); color: var(--navy); }
+  .day-tab:not(.active):hover { background: rgba(201,168,76,0.08); color: var(--gold); }
+  .schedule-panel { display: none; }
+  .schedule-panel.active { display: block; }
+  .schedule-item { display: grid; grid-template-columns: 140px 1fr; gap: 0; border-left: 2px solid var(--border); margin-bottom: 0; transition: border-color 0.3s; }
+  .schedule-item:hover { border-left-color: var(--gold); }
+  .schedule-item + .schedule-item { border-top: 1px solid rgba(255,255,255,0.04); }
+  .schedule-time { padding: 16px 20px 16px 24px; font-size: 0.78rem; font-weight: 600; color: var(--gold); letter-spacing: 0.05em; white-space: nowrap; }
+  .schedule-name { padding: 16px 20px; font-size: 0.9rem; color: rgba(255,255,255,0.8); line-height: 1.5; }
+  .schedule-item.highlight .schedule-name { color: var(--white); font-weight: 500; }
+  .schedule-item.highlight { border-left-color: var(--gold-dim); }
+
+  /* ── WHY ATTEND ── */
+  #why { background: var(--navy-mid); }
+  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .why-card { background: var(--navy); padding: 40px 32px; border: 1px solid rgba(201,168,76,0.08); transition: border-color 0.3s, transform 0.3s; }
+  .why-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+  .why-icon { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: rgba(201,168,76,0.1); border: 1px solid var(--border); border-radius: 2px; margin-bottom: 20px; font-size: 1.4rem; }
+  .why-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 600; margin-bottom: 10px; color: var(--white); }
+  .why-card p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.7; }
+
+  /* ── FORMS ── */
+  #register { background: var(--navy); }
+  .form-tabs { display: flex; gap: 0; margin-bottom: 48px; border-bottom: 2px solid var(--border); }
+  .form-tab { padding: 14px 28px; background: transparent; border: none; color: var(--text-muted); font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: color 0.2s, border-color 0.2s; }
+  .form-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+  .form-tab:not(.active):hover { color: rgba(201,168,76,0.7); }
+  .form-panel { display: none; }
+  .form-panel.active { display: block; animation: fadeUp 0.4s ease; }
+  .form-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .form-group { display: flex; flex-direction: column; gap: 8px; }
+  .form-group.full { grid-column: 1 / -1; }
+  label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
+  input, select, textarea { background: var(--navy-mid); border: 1px solid rgba(201,168,76,0.2); border-radius: 2px; padding: 12px 16px; color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 0.9rem; transition: border-color 0.2s, box-shadow 0.2s; outline: none; width: 100%; }
+  input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.2); }
+  input:focus, select:focus, textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,168,76,0.08); }
+  select option { background: var(--navy-mid); }
+  textarea { resize: vertical; min-height: 120px; }
+  .file-upload { background: var(--navy-mid); border: 2px dashed rgba(201,168,76,0.25); border-radius: 2px; padding: 32px; text-align: center; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
+  .file-upload:hover { border-color: var(--gold); background: rgba(201,168,76,0.03); }
+  .file-upload input[type="file"] { display: none; }
+  .file-upload-text { color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; }
+  .file-upload-text strong { display: block; color: var(--gold); font-size: 0.9rem; margin-bottom: 4px; }
+  .form-submit-area { margin-top: 32px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .form-note { font-size: 0.8rem; color: var(--text-muted); flex: 1; }
+  .form-success { display: none; background: rgba(201,168,76,0.08); border: 1px solid var(--gold); border-radius: 2px; padding: 24px 28px; margin-top: 24px; animation: fadeUp 0.4s ease; }
+  .form-success.show { display: block; }
+  .form-success h4 { color: var(--gold); font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; margin-bottom: 6px; }
+  .form-success p { color: rgba(255,255,255,0.7); font-size: 0.9rem; }
+  .required::after { content: ' *'; color: var(--gold); }
+
+  /* ── UPLOAD PROGRESS ── */
+  .upload-progress { display: none; margin-top: 10px; }
+  .upload-progress.show { display: block; }
+  .upload-bar-wrap { background: rgba(255,255,255,0.08); border-radius: 2px; height: 6px; overflow: hidden; margin-top: 6px; }
+  .upload-bar { height: 100%; background: var(--gold); border-radius: 2px; width: 0%; transition: width 0.2s; }
+  .upload-status { font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; }
+
+  /* ── ORGANIZERS ── */
+  #organizers { background: var(--navy-mid); }
+  .org-grid { display: flex; gap: 40px; align-items: center; flex-wrap: wrap; }
+  .org-card { background: var(--navy); border: 1px solid var(--border); padding: 32px 40px; text-align: center; flex: 1; min-width: 200px; border-radius: 2px; }
+  .org-abbr { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: var(--gold); letter-spacing: 0.05em; display: block; margin-bottom: 6px; }
+  .org-name { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+
+  /* ── FOOTER ── */
+  footer { background: #060e1a; border-top: 1px solid var(--border); padding: 48px 40px 32px; text-align: center; }
+  .footer-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 8px; }
+  .footer-sub { color: var(--text-muted); font-size: 0.83rem; margin-bottom: 24px; }
+  .footer-links { display: flex; gap: 24px; justify-content: center; list-style: none; margin-bottom: 32px; }
+  .footer-links a { color: var(--text-muted); font-size: 0.8rem; text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-copy { font-size: 0.75rem; color: rgba(255,255,255,0.2); }
+  .gold-divider { width: 60px; height: 2px; background: linear-gradient(90deg, var(--gold), transparent); margin-bottom: 24px; }
+
+  /* ── COUNTDOWN ── */
+  .countdown-wrap { display: flex; gap: 24px; justify-content: center; margin-bottom: 48px; animation: fadeUp 1s ease 0.7s both; }
+  .countdown-unit { text-align: center; min-width: 70px; }
+  .countdown-num { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--gold); line-height: 1; display: block; }
+  .countdown-lbl { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); }
+  .countdown-sep { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: var(--border); align-self: flex-start; padding-top: 4px; }
+
+  /* ── ADMIN PANEL ── */
+  #admin-btn { position: fixed; bottom: 28px; right: 28px; z-index: 9000; background: var(--navy-mid); border: 1px solid var(--border); color: var(--gold); font-family: 'DM Sans', sans-serif; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 10px 18px; border-radius: 2px; cursor: pointer; opacity: 0.5; transition: opacity 0.2s, border-color 0.2s; }
+  #admin-btn:hover { opacity: 1; border-color: var(--gold); }
+  .admin-overlay { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(6,14,26,0.97); overflow-y: auto; padding: 40px 24px; }
+  .admin-overlay.open { display: block; }
+  .admin-wrap { max-width: 1100px; margin: 0 auto; }
+  .admin-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 36px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+  .admin-title { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 0.08em; color: var(--gold); }
+  .admin-close { background: transparent; border: 1px solid var(--border); color: var(--text-muted); font-family: 'DM Sans', sans-serif; font-size: 0.8rem; padding: 8px 20px; cursor: pointer; border-radius: 2px; transition: color 0.2s, border-color 0.2s; }
+  .admin-close:hover { color: var(--white); border-color: var(--white); }
+  .admin-login { max-width: 380px; margin: 80px auto; text-align: center; }
+  .admin-login h2 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; margin-bottom: 8px; }
+  .admin-login p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 32px; }
+  .admin-login input { width: 100%; background: var(--navy-mid); border: 1px solid rgba(201,168,76,0.3); border-radius: 2px; padding: 14px 16px; color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 0.95rem; outline: none; margin-bottom: 16px; text-align: center; letter-spacing: 0.1em; }
+  .admin-login input:focus { border-color: var(--gold); }
+  .admin-login .btn-primary { width: 100%; }
+  .admin-login-err { color: #e06060; font-size: 0.8rem; margin-top: 10px; display: none; }
+  .admin-dashboard { display: none; }
+  .admin-dashboard.visible { display: block; }
+  .admin-stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-bottom: 40px; }
+  .admin-stat { background: var(--navy-mid); border: 1px solid var(--border); padding: 28px 24px; text-align: center; }
+  .admin-stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--gold); line-height: 1; display: block; }
+  .admin-stat-lbl { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); margin-top: 6px; }
+  .admin-section-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; color: var(--white); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+  .admin-section-title em { color: var(--gold); font-style: italic; }
+  .admin-table-wrap { overflow-x: auto; margin-bottom: 48px; border: 1px solid var(--border); border-radius: 2px; }
+  .admin-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
+  .admin-table th { background: var(--navy-mid); color: var(--gold); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 12px 16px; text-align: left; white-space: nowrap; border-bottom: 1px solid var(--border); }
+  .admin-table td { padding: 12px 16px; color: rgba(255,255,255,0.8); border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: top; max-width: 200px; word-break: break-word; }
+  .admin-table tr:last-child td { border-bottom: none; }
+  .admin-table tr:hover td { background: rgba(201,168,76,0.03); }
+  .admin-empty { text-align: center; color: var(--text-muted); font-size: 0.85rem; padding: 40px; font-style: italic; }
+  .dl-btn { display: inline-block; background: rgba(201,168,76,0.12); border: 1px solid var(--border); color: var(--gold); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 12px; border-radius: 2px; cursor: pointer; text-decoration: none; transition: background 0.2s; white-space: nowrap; }
+  .dl-btn:hover { background: rgba(201,168,76,0.22); }
+  .export-btn { background: transparent; border: 1px solid var(--border); color: var(--text-muted); font-family: 'DM Sans', sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 14px; cursor: pointer; border-radius: 2px; transition: color 0.2s, border-color 0.2s; }
+  .export-btn:hover { color: var(--gold); border-color: var(--gold); }
+  .admin-clear-btn { background: transparent; border: 1px solid rgba(220,60,60,0.3); color: rgba(220,60,60,0.6); font-family: 'DM Sans', sans-serif; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 14px; cursor: pointer; border-radius: 2px; transition: color 0.2s, border-color 0.2s; margin-left: 8px; }
+  .admin-clear-btn:hover { color: #e05050; border-color: #e05050; }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .why-grid { grid-template-columns: 1fr; }
+    .form-layout { grid-template-columns: 1fr; }
+    .form-group.full { grid-column: 1; }
+    section { padding: 60px 16px; }
+    .hero-meta { gap: 16px; }
+    .hero-meta-sep { display: none; }
+    .schedule-item { grid-template-columns: 110px 1fr; }
+    .form-tab { padding: 12px 16px; font-size: 0.75rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">SPE–PPL 2026</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#schedule">Schedule</a></li>
+    <li><a href="#why">Why Attend</a></li>
+    <li><a href="#register">Register</a></li>
+    <li><a href="#register" class="nav-cta">Register Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-orb"></div>
+  <div class="hero-content">
+    <div class="hero-badge">SPE Mehran Student Chapter · PPL</div>
+    <p class="hero-org">Mehran University of Engineering &amp; Technology · Jamshoro</p>
+    <h1 class="hero-title">Technical Symposium<br>&amp; <em>Energy Summit</em></h1>
+    <span class="hero-year">2026</span>
+    <p class="hero-tagline">"Powering Pakistan's Energy Future: Innovation, Exploration &amp; Sustainability"</p>
+    <div class="countdown-wrap" id="countdown">
+      <div class="countdown-unit"><span class="countdown-num" id="cd-days">00</span><span class="countdown-lbl">Days</span></div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-hours">00</span><span class="countdown-lbl">Hours</span></div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-mins">00</span><span class="countdown-lbl">Mins</span></div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-secs">00</span><span class="countdown-lbl">Secs</span></div>
+    </div>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        5th &amp; 6th August 2026
+      </div>
+      <span class="hero-meta-sep">◆</span>
+      <div class="hero-meta-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Main Auditorium, MUET Jamshoro
+      </div>
+      <span class="hero-meta-sep">◆</span>
+      <div class="hero-meta-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+        8:30 AM Daily
+      </div>
+    </div>
+    <div class="hero-btns">
+      <a href="#register" class="btn-primary">Register Now</a>
+      <a href="#schedule" class="btn-outline">View Schedule</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-label">About The Event</div>
+        <h2 class="section-title">Where Pakistan's Energy<br><em>Future Is Shaped</em></h2>
+        <p>The SPE–PPL Technical Symposium &amp; Energy Summit 2026 is a premier gathering organized by the SPE Mehran Student Chapter in association with Pakistan Petroleum Limited — bringing together students, academics, and industry leaders.</p>
+        <p>Across two intensive days, participants will explore cutting-edge developments in petroleum engineering, renewable energy integration, digital transformation, and career pathways in the energy sector.</p>
+        <p>Featuring keynote addresses, technical sessions by industry experts, panel discussions, and competitive events — this is the defining event for aspiring petroleum engineers in Pakistan.</p>
+        <div style="margin-top:32px;"><a href="#register" class="btn-primary">Secure Your Spot</a></div>
+      </div>
+      <div class="about-stats">
+        <div class="stat-box"><span class="stat-num">2</span><div class="stat-label">Days</div></div>
+        <div class="stat-box"><span class="stat-num">4+</span><div class="stat-label">Competitions</div></div>
+        <div class="stat-box"><span class="stat-num">4</span><div class="stat-label">Technical Sessions</div></div>
+        <div class="stat-box"><span class="stat-num">3</span><div class="stat-label">Panel Discussions</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section id="schedule">
+  <div class="section-inner">
+    <div class="section-label">Program</div>
+    <h2 class="section-title">Minute-to-Minute<br><em>Schedule</em></h2>
+    <div class="day-tabs">
+      <button class="day-tab active" onclick="switchDay('day1', this)">Day 01 — Aug 5th</button>
+      <button class="day-tab" onclick="switchDay('day2', this)">Day 02 — Aug 6th</button>
+    </div>
+    <div id="day1" class="schedule-panel active">
+      <div class="schedule-item"><div class="schedule-time">8:30–9:00</div><div class="schedule-name">Registration &amp; Welcome Desk</div></div>
+      <div class="schedule-item"><div class="schedule-time">9:00–9:10</div><div class="schedule-name">Recitation of Glorious Quran &amp; National Anthem</div></div>
+      <div class="schedule-item"><div class="schedule-time">9:10–9:15</div><div class="schedule-name">Video Highlights of SPE Events</div></div>
+      <div class="schedule-item"><div class="schedule-time">9:15–9:20</div><div class="schedule-name">Inauguration / Opening Ceremony</div></div>
+      <div class="schedule-item"><div class="schedule-time">9:20–9:35</div><div class="schedule-name">Welcome Speech by Director, IPNGE</div></div>
+      <div class="schedule-item highlight"><div class="schedule-time">9:35–10:10</div><div class="schedule-name">🎤 Keynote Addresses</div></div>
+      <div class="schedule-item"><div class="schedule-time">10:10–10:25</div><div class="schedule-name">Speech by Guest of Honor</div></div>
+      <div class="schedule-item"><div class="schedule-time">10:25–10:40</div><div class="schedule-name">Speech by Chief Guest</div></div>
+      <div class="schedule-item"><div class="schedule-time">10:40–10:45</div><div class="schedule-name">Group Photography</div></div>
+      <div class="schedule-item"><div class="schedule-time">10:45–11:10</div><div class="schedule-name">☕ Morning Tea Break</div></div>
+      <div class="schedule-item highlight"><div class="schedule-time">11:10–12:20</div><div class="schedule-name">🏆 Poster Competition</div></div>
+      <div class="schedule-item highlight"><div class="schedule-time">12:20–12:50</div><div class="schedule-name">💬 Panel Discussion 1: Energy Transition &amp; Future of Oil &amp; Gas in Pakistan</div></div>
+      <div class="schedule-item highlight"><div class="schedule-time">12:50–1:30</div><div class="schedule-name">⚙️ Technical Session 1: Exploration &amp; Reservoir Engineering (Industry Expert)</div></div>
+      <div class="schedule-item"><div class="schedule-time">1:30–2:30</div><div class="schedule-name">🍽 Networking Lunch &amp; Prayer Break</div></div>
+      <div class="schedule-item highlight"><div class="schedule-time">2:30–3:15</div><div class="schedule-name">🏭 Industrial Talk: Current Situation of Oil Industry in Pakistan</div></div>
+      <div class="schedule-item highlight"><div class="schedule-time">3:15–3:55</div><div class="schedule-name">⚙️ Technical Session 2: Drilling &amp; Well Completion Technologies (Industry Expert)</div></div>
+      <div class="schedule-item"><div class="schedule-time">3:55–4:20</div><div class="schedule-name">☕ Afternoon Tea Break</div></div>
+      <div class="schedule-item highlight"><div class="schedule-time">4:20–4:55</div><div class="schedule-name">🎤 Debate Competition (Preliminary Round)</div></div>
+      <div class="schedule-item"><div class="schedule-time">4:55–5:15</div><div class="schedule-name">Day-1 Wrap-Up &amp; Announcements</div></div>
+    </div>
+    <div id="day2" class="schedule-panel">
+      <div class="schedule-item"><div class="schedule-time">8:30–9:00</div><div class="schedule-name">Arrival of Participants</div></div>
+      <div class="schedule-item"><div class="schedule-time">9:00–9:10</div><div class="schedule-name">Recitation of Glorious Quran &amp; National Anthem</div></div>
+      <div class="schedule-item"><div class="schedule-time">9:10–9:15</div><div class="schedule-name">Video Highlights of Day 01</div></div>
+      <div class="schedule-item highlight"><div class="schedule-time">9:15–9:55</div><div class="schedule-name">⚙️ Technical Session 3: Production Optimization &amp; EOR (Industry Expert)</div></div>
+      <div class="schedule-item highlight"><div class="schedule-time">9:55–10:30</div><div class="schedule-name">💬 Panel Discussion 2: Renewable Energy Integration with Oil &amp; Gas Sector</div></div>
+      <div class="schedule-item"><div class="schedule-time">10:30–10:55</div><div class="schedule-name">☕ Morning Tea Break</div></div>
+      <div class="schedule-item highlight"><div class="schedule-time">10:55–11:40</div><div class="schedule-name">⚙️ Technical Session 4: Digital Transformation &amp; AI in Petroleum Engineering (Industry Expert)</div></div>
+      <div class="schedule-item highlight"><div class="schedule-time">11:40–12:30</div><div class="schedule-name">🏆 Petrobowl Competition (Preliminary Round)</div></div>
+      <div class="schedule-item"><div class="schedule-time">12:30–12:35</div><div class="schedule-name">Group Photography</div></div>
+      <div class="schedule-item"><div class="schedule-time">12:35–1:35</div><div class="schedule-name">🍽 Networking Lunch &amp; Prayer Break</div></div>
+      <div class="schedule-item highlight"><div class="schedule-time">1:35–2:05</div><div class="schedule-name">🎤 Debate Competition (Final Round)</div></div>
+      <div class="schedule-item highlight"><div class="schedule-time">2:05–3:05</div><div class="schedule-name">📄 Paper Presentation Contest</div></div>
+      <div class="schedule-item highlight"><div class="schedule-time">3:05–3:30</div><div class="schedule-name">🏆 Petrobowl Competition (Final Round)</div></div>
+      <div class="schedule-item highlight"><div class="schedule-time">3:30–4:00</div><div class="schedule-name">💬 Panel Discussion 3: Career Pathways for Young Engineers</div></div>
+      <div class="schedule-item"><div class="schedule-time">4:00–4:15</div><div class="schedule-name">Concluding Remarks by Faculty Advisor, SPE Mehran Student Chapter</div></div>
+      <div class="schedule-item highlight"><div class="schedule-time">4:15–4:45</div><div class="schedule-name">🥇 Award &amp; Certificate Distribution Ceremony</div></div>
+      <div class="schedule-item"><div class="schedule-time">4:45–5:00</div><div class="schedule-name">Closing Addresses &amp; Vote of Thanks</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY ATTEND -->
+<section id="why">
+  <div class="section-inner">
+    <div class="section-label">Highlights</div>
+    <h2 class="section-title">Why You Should<br><em>Attend</em></h2>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-icon">🏆</div><h3>Competitions</h3><p>Compete in Petrobowl, Debate, Poster, and Paper Presentation contests. Win prizes and certificates recognizing your excellence.</p></div>
+      <div class="why-card"><div class="why-icon">🎤</div><h3>Industry Expert Talks</h3><p>Keynote addresses and technical sessions delivered by leading professionals and experts from Pakistan's energy sector.</p></div>
+      <div class="why-card"><div class="why-icon">🤝</div><h3>Networking</h3><p>Build lasting connections with industry leaders, professionals, faculty, and fellow engineers at dedicated networking sessions.</p></div>
+      <div class="why-card"><div class="why-icon">🔬</div><h3>Innovation &amp; Research</h3><p>Explore cutting-edge ideas in energy, petroleum engineering, AI applications, EOR, and digital transformation.</p></div>
+      <div class="why-card"><div class="why-icon">🌱</div><h3>Renewable Energy</h3><p>Dedicated panel on integrating renewable energy with the oil &amp; gas sector — the future of Pakistan's energy landscape.</p></div>
+      <div class="why-card"><div class="why-icon">🎓</div><h3>Career Pathways</h3><p>Receive expert guidance on building a successful career in the energy sector — directly from those who have done it.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTER / FORMS -->
+<section id="register">
+  <div class="section-inner">
+    <div class="section-label">Participate</div>
+    <h2 class="section-title">Join the<br><em>Summit</em></h2>
+    <div class="form-tabs">
+      <button class="form-tab active" onclick="switchForm('attendee', this)">Attendee Registration</button>
+      <button class="form-tab" onclick="switchForm('poster', this)">Poster Submission</button>
+      <button class="form-tab" onclick="switchForm('paper', this)">Paper Submission</button>
+    </div>
+
+    <!-- ── ATTENDEE FORM ── -->
+    <div id="attendee" class="form-panel active">
+      <div class="form-layout">
+        <div class="form-group"><label class="required">Full Name</label><input type="text" placeholder="Muhammad Ali Khan" id="att-name"></div>
+        <div class="form-group"><label class="required">Student ID / Roll No.</label><input type="text" placeholder="ME-21-F-002"></div>
+        <div class="form-group"><label class="required">Email Address</label><input type="email" placeholder="yourname@muet.edu.pk"></div>
+        <div class="form-group"><label class="required">Phone Number</label><input type="tel" placeholder="+92-300-0000000"></div>
+        <div class="form-group"><label class="required">University / Institution</label><input type="text" placeholder="MUET Jamshoro"></div>
+        <div class="form-group"><label class="required">Department</label><input type="text" placeholder="Petroleum &amp; Natural Gas Engineering"></div>
+        <div class="form-group">
+          <label class="required">Current Year of Study</label>
+          <select>
+            <option value="" disabled selected>Select Year</option>
+            <option>1st Year</option><option>2nd Year</option><option>3rd Year</option>
+            <option>4th Year</option><option>Post-Graduate</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Degree Program</label>
+          <input type="text" placeholder="e.g. BE Petroleum Engineering">
+        </div>
+        <div class="form-group full">
+          <label>Competitions to Enter</label>
+          <select id="competition-select" onchange="toggleMultiComp(this)">
+            <option value="" disabled selected>Select Competition(s)</option>
+            <option>Petrobowl</option><option>Debate Competition</option>
+            <option>Poster Competition</option><option>Paper Presentation</option>
+            <option value="multiple">Multiple — specify below</option>
+            <option>Just attending (no competition)</option>
+          </select>
+        </div>
+        <div class="form-group full" id="multi-comp-group" style="display:none;">
+          <label>Specify Competitions (select all that apply)</label>
+          <div style="display:flex; flex-wrap:wrap; gap:12px; padding:16px; background:var(--navy-mid); border:1px solid rgba(201,168,76,0.2); border-radius:2px;">
+            <label style="display:flex;align-items:center;gap:8px;text-transform:none;letter-spacing:0;font-size:0.9rem;color:var(--white);cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;accent-color:var(--gold);"> Petrobowl</label>
+            <label style="display:flex;align-items:center;gap:8px;text-transform:none;letter-spacing:0;font-size:0.9rem;color:var(--white);cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;accent-color:var(--gold);"> Debate Competition</label>
+            <label style="display:flex;align-items:center;gap:8px;text-transform:none;letter-spacing:0;font-size:0.9rem;color:var(--white);cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;accent-color:var(--gold);"> Poster Competition</label>
+            <label style="display:flex;align-items:center;gap:8px;text-transform:none;letter-spacing:0;font-size:0.9rem;color:var(--white);cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;accent-color:var(--gold);"> Paper Presentation</label>
+          </div>
+        </div>
+        <div class="form-group full">
+          <label>How did you hear about this event?</label>
+          <select>
+            <option value="" disabled selected>Select</option>
+            <option>SPE Social Media</option><option>University Notice Board</option>
+            <option>Friend / Colleague</option><option>Faculty / Professor</option>
+            <option>Email</option><option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-submit-area">
+        <button class="btn-primary" onclick="submitForm('attendee', this)">Complete Registration →</button>
+        <p class="form-note">Open to all engineering students. Participation certificates will be issued to all attendees.</p>
+      </div>
+      <div class="form-success" id="attendee-success">
+        <h4>✓ Registration Received!</h4>
+        <p>Thank you for registering! A confirmation will be sent to your email. We look forward to welcoming you on 5th–6th August 2026 at MUET Jamshoro.</p>
+      </div>
+    </div>
+
+    <!-- ── POSTER FORM ── -->
+    <div id="poster" class="form-panel">
+      <div class="form-layout">
+        <div class="form-group"><label class="required">Presenter Name</label><input type="text" placeholder="Full Name"></div>
+        <div class="form-group"><label class="required">Email Address</label><input type="email" placeholder="yourname@muet.edu.pk"></div>
+        <div class="form-group"><label class="required">University / Institution</label><input type="text" placeholder="MUET Jamshoro"></div>
+        <div class="form-group"><label class="required">Department / Program</label><input type="text" placeholder="Petroleum &amp; Natural Gas Engineering"></div>
+        <div class="form-group">
+          <label class="required">Year of Study</label>
+          <select>
+            <option value="" disabled selected>Select Year</option>
+            <option>1st Year</option><option>2nd Year</option><option>3rd Year</option>
+            <option>4th Year</option><option>Post-Graduate</option>
+          </select>
+        </div>
+        <div class="form-group full"><label class="required">Poster Title</label><input type="text" placeholder="e.g. Enhanced Oil Recovery Using CO₂ Injection in Sindh Fields"></div>
+        <div class="form-group full">
+          <label class="required">Topic / Technical Area</label>
+          <select>
+            <option value="" disabled selected>Select Technical Area</option>
+            <option>Exploration &amp; Reservoir Engineering</option><option>Drilling &amp; Well Completion</option>
+            <option>Production Optimization &amp; EOR</option><option>Digital Transformation &amp; AI in Petroleum</option>
+            <option>Renewable Energy Integration</option><option>Energy Transition &amp; Sustainability</option>
+            <option>Pipeline &amp; Surface Facilities</option><option>Other</option>
+          </select>
+        </div>
+        <div class="form-group full"><label class="required">Abstract (250–400 words)</label><textarea placeholder="Provide a concise summary of your poster's key objectives, methodology, findings, and conclusions..." style="min-height:160px;"></textarea></div>
+        <div class="form-group full"><label>Co-Presenter(s) Name(s)</label><input type="text" placeholder="If applicable"></div>
+        <div class="form-group full">
+          <label>Upload Poster File (Optional — PDF or PPTX, max 20MB)</label>
+          <div class="file-upload" onclick="document.getElementById('poster-file').click()">
+            <input type="file" id="poster-file" accept=".pdf,.pptx,.ppt" onchange="showFileName(this,'poster-file-name')">
+            <div class="file-upload-text">
+              <strong id="poster-file-name">Click to Upload Poster File</strong>
+              PDF or PPTX format · Maximum 20MB
+            </div>
+          </div>
+          <div class="upload-progress" id="poster-upload-progress">
+            <div class="upload-bar-wrap"><div class="upload-bar" id="poster-upload-bar"></div></div>
+            <div class="upload-status" id="poster-upload-status">Uploading…</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-submit-area">
+        <button class="btn-primary" onclick="submitForm('poster', this)">Submit Poster →</button>
+        <p class="form-note">Posters will be displayed and judged on Day 1. Winners will be announced at the Award Ceremony.</p>
+      </div>
+      <div class="form-success" id="poster-success">
+        <h4>✓ Poster Submission Received!</h4>
+        <p>Your poster abstract has been submitted successfully. Our team will review it and send a confirmation within 2–3 working days.</p>
+      </div>
+    </div>
+
+    <!-- ── PAPER FORM ── -->
+    <div id="paper" class="form-panel">
+      <div class="form-layout">
+        <div class="form-group"><label class="required">Lead Author Name</label><input type="text" placeholder="Full Name"></div>
+        <div class="form-group"><label class="required">Email Address</label><input type="email" placeholder="yourname@muet.edu.pk"></div>
+        <div class="form-group"><label class="required">Phone Number</label><input type="tel" placeholder="+92-300-0000000"></div>
+        <div class="form-group"><label class="required">University / Institution</label><input type="text" placeholder="MUET Jamshoro"></div>
+        <div class="form-group"><label class="required">Department / Program</label><input type="text" placeholder="Petroleum &amp; Natural Gas Engineering"></div>
+        <div class="form-group">
+          <label class="required">Year of Study</label>
+          <select>
+            <option value="" disabled selected>Select Year</option>
+            <option>1st Year</option><option>2nd Year</option><option>3rd Year</option><option>4th Year</option><option>Post-Graduate</option>
+          </select>
+        </div>
+        <div class="form-group full"><label class="required">Paper Title</label><input type="text" placeholder="e.g. Application of Machine Learning in Formation Evaluation"></div>
+        <div class="form-group full">
+          <label class="required">Technical Track</label>
+          <select>
+            <option value="" disabled selected>Select Track</option>
+            <option>Exploration &amp; Geosciences</option><option>Reservoir Engineering</option>
+            <option>Drilling Engineering</option><option>Well Completion &amp; Stimulation</option>
+            <option>Production Engineering &amp; EOR</option><option>Digital Transformation &amp; AI</option>
+            <option>Renewable &amp; Alternative Energy</option><option>HSE &amp; Environmental Engineering</option>
+            <option>Economics &amp; Project Management</option>
+          </select>
+        </div>
+        <div class="form-group full"><label class="required">Abstract (300–500 words)</label><textarea placeholder="Summarize the problem statement, methodology, key results, and significance of your research..." style="min-height:180px;"></textarea></div>
+        <div class="form-group full"><label>Co-Authors (list names &amp; affiliations)</label><textarea placeholder="e.g. Aisha Siddiqui (MUET), Prof. Dr. XYZ (Supervisor)..." style="min-height:80px;"></textarea></div>
+        <div class="form-group full">
+          <label class="required">Upload Full Paper (PDF, max 10MB)</label>
+          <div class="file-upload" onclick="document.getElementById('paper-file').click()">
+            <input type="file" id="paper-file" accept=".pdf,.doc,.docx" onchange="showFileName(this,'paper-file-name')">
+            <div class="file-upload-text">
+              <strong id="paper-file-name">Click to Upload Full Paper</strong>
+              PDF or DOC format · Maximum 10MB · SPE format preferred
+            </div>
+          </div>
+          <div class="upload-progress" id="paper-upload-progress">
+            <div class="upload-bar-wrap"><div class="upload-bar" id="paper-upload-bar"></div></div>
+            <div class="upload-status" id="paper-upload-status">Uploading…</div>
+          </div>
+        </div>
+        <div class="form-group full">
+          <label>Presentation Preference</label>
+          <select>
+            <option value="" disabled selected>Select</option>
+            <option>Oral Presentation (Paper Presentation Contest)</option>
+            <option>Poster Presentation</option>
+            <option>Either — as judged by committee</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-submit-area">
+        <button class="btn-primary" onclick="submitForm('paper', this)">Submit Paper →</button>
+        <p class="form-note">Papers are reviewed by a technical committee. Accepted papers will be presented on Day 2. Best paper award will be given.</p>
+      </div>
+      <div class="form-success" id="paper-success">
+        <h4>✓ Paper Submission Received!</h4>
+        <p>Your paper has been submitted for technical review. The committee will notify you of acceptance within 5–7 working days. Good luck!</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ORGANIZERS -->
+<section id="organizers">
+  <div class="section-inner">
+    <div class="section-label">Organized By</div>
+    <h2 class="section-title">Our <em>Partners</em></h2>
+    <div class="org-grid">
+      <div class="org-card"><span class="org-abbr">SPE–MSC</span><div class="org-name">Society of Petroleum Engineers<br>Mehran Student Chapter<br>MUET Jamshoro</div></div>
+      <div class="org-card"><span class="org-abbr">PPL</span><div class="org-name">Pakistan Petroleum Limited<br><em>In Association</em></div></div>
+      <div class="org-card"><span class="org-abbr">IPNGE</span><div class="org-name">Institute of Petroleum &amp;<br>Natural Gas Engineering<br>MUET Jamshoro</div></div>
+    </div>
+    <div style="margin-top:48px; padding:28px 32px; background:rgba(201,168,76,0.05); border:1px solid var(--border); border-radius:2px;">
+      <p style="font-size:0.85rem; color:var(--text-muted);"><strong style="color:var(--gold);">Faculty Sponsor:</strong> Dr. Aftab Mahessar, SPE Mehran Student Chapter</p>
+    </div>
+  </div>
+</section>
+
+<!-- ADMIN LOGIN BUTTON -->
+<button id="admin-btn" onclick="openAdmin()">⚙ Admin</button>
+
+<!-- ADMIN OVERLAY -->
+<div class="admin-overlay" id="admin-overlay">
+  <div class="admin-wrap">
+    <div class="admin-header">
+      <div class="admin-title">SPE–PPL 2026 · Admin Panel</div>
+      <button class="admin-close" onclick="closeAdmin()">✕ Close</button>
+    </div>
+    <div class="admin-login" id="admin-login-screen">
+      <h2>Admin <em style="color:var(--gold);font-style:italic;">Access</em></h2>
+      <p>Enter the admin password to view registrations and submissions.</p>
+      <input type="password" id="admin-pw-input" placeholder="Password" onkeydown="if(event.key==='Enter')adminLogin()">
+      <button class="btn-primary" onclick="adminLogin()">Login →</button>
+      <div class="admin-login-err" id="admin-login-err">Incorrect password. Please try again.</div>
+    </div>
+    <div class="admin-dashboard" id="admin-dashboard">
+      <div class="admin-stats-row">
+        <div class="admin-stat"><span class="admin-stat-num" id="stat-registrations">0</span><div class="admin-stat-lbl">Registrations</div></div>
+        <div class="admin-stat"><span class="admin-stat-num" id="stat-posters">0</span><div class="admin-stat-lbl">Poster Submissions</div></div>
+        <div class="admin-stat"><span class="admin-stat-num" id="stat-papers">0</span><div class="admin-stat-lbl">Paper Submissions</div></div>
+      </div>
+      <div class="admin-section-title">
+        <span>Attendee <em>Registrations</em></span>
+        <div><button class="export-btn" onclick="exportCSV('registrations')">↓ Export CSV</button><button class="admin-clear-btn" onclick="clearData('registrations')">✕ Clear</button></div>
+      </div>
+      <div class="admin-table-wrap">
+        <table class="admin-table"><thead><tr><th>#</th><th>Submitted</th><th>Full Name</th><th>Student ID</th><th>Email</th><th>Phone</th><th>University</th><th>Department</th><th>Year</th><th>Program</th><th>Competition(s)</th><th>Heard From</th></tr></thead><tbody id="reg-tbody"></tbody></table>
+      </div>
+      <div class="admin-section-title">
+        <span>Poster <em>Submissions</em></span>
+        <div><button class="export-btn" onclick="exportCSV('posters')">↓ Export CSV</button><button class="admin-clear-btn" onclick="clearData('posters')">✕ Clear</button></div>
+      </div>
+      <div class="admin-table-wrap">
+        <table class="admin-table"><thead><tr><th>#</th><th>Submitted</th><th>Presenter Name</th><th>Email</th><th>University</th><th>Department</th><th>Poster Title</th><th>Technical Area</th><th>Abstract</th><th>Co-Presenters</th><th>File</th></tr></thead><tbody id="poster-tbody"></tbody></table>
+      </div>
+      <div class="admin-section-title">
+        <span>Paper <em>Submissions</em></span>
+        <div><button class="export-btn" onclick="exportCSV('papers')">↓ Export CSV</button><button class="admin-clear-btn" onclick="clearData('papers')">✕ Clear</button></div>
+      </div>
+      <div class="admin-table-wrap">
+        <table class="admin-table"><thead><tr><th>#</th><th>Submitted</th><th>Lead Author</th><th>Email</th><th>Phone</th><th>University</th><th>Department</th><th>Year</th><th>Paper Title</th><th>Track</th><th>Abstract</th><th>Co-Authors</th><th>Presentation Pref</th><th>File</th></tr></thead><tbody id="paper-tbody"></tbody></table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-title">SPE–PPL 2026</div>
+  <p class="footer-sub">Technical Symposium &amp; Energy Summit · 5th &amp; 6th August 2026 · MUET Jamshoro</p>
+  <ul class="footer-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#schedule">Schedule</a></li>
+    <li><a href="#why">Why Attend</a></li>
+    <li><a href="#register">Register</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 SPE Mehran Student Chapter · Institute of Petroleum &amp; Natural Gas Engineering, MUET Jamshoro</p>
+</footer>
+
+<script>
+  // ════════════════════════════════════════════════
+  //  CONFIG — update SCRIPT_URL after redeploying
+  // ════════════════════════════════════════════════
+  const ADMIN_PASSWORD  = 'SPEAdmin2026';
+  const SCRIPT_URL      = 'https://script.google.com/macros/s/AKfycbwE4f3PJIKUCg8SPXra5sTgHNrc6bTFPwBdM-7RO_Gd2NG-QjoOOXxi-GwPJSX-nKQd/exec';
+  const DRIVE_FOLDER_ID = '18FWhkdouhD3TOtNcTthWALi2qClZpXYk';
+  const CHUNK_SIZE      = 150000; // ~150 KB per chunk (safe for Apps Script properties)
+
+  const SHEETS = {
+    registrations: 'ATTENDEE REGISTRATION',
+    posters:       'POSTER SUBMISSION',
+    papers:        'PAPER SUBMISSION'
+  };
+  const HEADERS = {
+    registrations: ['ID','Submitted','Full Name','Student ID','Email','Phone','University','Department','Year','Program','Competitions','Heard From'],
+    posters:       ['ID','Submitted','Presenter Name','Email','University','Department','Poster Title','Technical Area','Abstract','Co-Presenters','File Name','File URL'],
+    papers:        ['ID','Submitted','Lead Author','Email','Phone','University','Department','Year','Paper Title','Track','Abstract','Co-Authors','Presentation Pref','File Name','File URL']
+  };
+
+  // ── APPEND ROW TO SHEET ──
+  async function appendToSheet(sheetName, rowValues, headers) {
+    const res = await fetch(SCRIPT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify({ action: 'appendRow', sheet: sheetName, headers: headers, row: rowValues })
+    });
+    const data = await res.json();
+    if (data.status !== 'ok') throw new Error(data.message || 'Failed to save');
+  }
+
+  // ── READ ALL ROWS FROM SHEET ──
+  async function readSheet(sheetName) {
+    const params = new URLSearchParams({ action: 'read', sheet: sheetName });
+    const res  = await fetch(SCRIPT_URL + '?' + params.toString());
+    const data = await res.json();
+    const rows = data.values || [];
+    if (rows.length <= 1) return [];
+    const hdrs = rows[0];
+    return rows.slice(1).map(row => {
+      const obj = {};
+      hdrs.forEach((h, i) => obj[h] = row[i] || '');
+      return obj;
+    });
+  }
+
+  async function ensureHeaders() {} // no-op: Apps Script handles this
+
+  // ── CHUNKED FILE UPLOAD TO GOOGLE DRIVE ──
+  async function uploadFileToDrive(file, progressBarId, progressWrapId, statusId) {
+    if (!file) return { fileName: '', fileUrl: '' };
+
+    // Show progress bar
+    if (progressWrapId) {
+      document.getElementById(progressWrapId).classList.add('show');
+      document.getElementById(statusId).textContent = 'Reading file…';
+    }
+
+    // Read file as base64
+    const base64Full = await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload  = e => resolve(e.target.result.split(',')[1]);
+      reader.onerror = () => reject(new Error('Failed to read file'));
+      reader.readAsDataURL(file);
+    });
+
+    const totalChunks = Math.ceil(base64Full.length / CHUNK_SIZE);
+    const uploadId    = 'upl_' + Date.now() + '_' + Math.random().toString(36).slice(2);
+
+    // Send chunks one by one
+    for (let i = 0; i < totalChunks; i++) {
+      const chunk = base64Full.slice(i * CHUNK_SIZE, (i + 1) * CHUNK_SIZE);
+      const pct   = Math.round(((i + 1) / (totalChunks + 1)) * 90);
+
+      if (progressBarId) {
+        document.getElementById(progressBarId).style.width = pct + '%';
+        document.getElementById(statusId).textContent =
+          'Uploading chunk ' + (i + 1) + ' of ' + totalChunks + '…';
+      }
+
+      const res = await fetch(SCRIPT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain' },
+        body: JSON.stringify({ action: 'chunk', uploadId, index: i, data: chunk })
+      });
+      const result = await res.json();
+      if (result.status !== 'ok') throw new Error('Chunk ' + i + ' failed: ' + result.message);
+    }
+
+    // Finalise — tell Apps Script to assemble and save to Drive
+    if (progressBarId) {
+      document.getElementById(progressBarId).style.width = '95%';
+      document.getElementById(statusId).textContent = 'Saving to Drive…';
+    }
+
+    const finalRes = await fetch(SCRIPT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify({
+        action: 'finalise',
+        uploadId,
+        totalChunks,
+        fileName: file.name,
+        mimeType: file.type || 'application/octet-stream',
+        folderId: DRIVE_FOLDER_ID
+      })
+    });
+    const finalData = await finalRes.json();
+
+    if (progressBarId) {
+      document.getElementById(progressBarId).style.width = '100%';
+      document.getElementById(statusId).textContent =
+        finalData.status === 'ok' ? '✓ Upload complete' : '⚠ Upload failed';
+    }
+
+    if (finalData.status === 'ok') {
+      return { fileName: file.name, fileUrl: finalData.fileUrl };
+    } else {
+      console.error('Upload finalise error:', finalData.message);
+      return { fileName: file.name, fileUrl: '' };
+    }
+  }
+
+  // ── UI HELPERS ──
+  function toggleMultiComp(sel) {
+    document.getElementById('multi-comp-group').style.display = sel.value === 'multiple' ? 'block' : 'none';
+  }
+  function switchDay(id, btn) {
+    document.querySelectorAll('.schedule-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.day-tab').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+  function switchForm(id, btn) {
+    document.querySelectorAll('.form-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.form-tab').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+  function showFileName(input, labelId) {
+    if (input.files && input.files[0]) {
+      document.getElementById(labelId).textContent = '✓ ' + input.files[0].name;
+    }
+  }
+  function setSubmitLoading(btnEl, loading, msg) {
+    if (loading) {
+      btnEl.disabled = true;
+      btnEl.dataset.orig = btnEl.textContent;
+      btnEl.textContent = msg || 'Saving…';
+      btnEl.style.opacity = '0.7';
+    } else {
+      btnEl.disabled = false;
+      btnEl.textContent = btnEl.dataset.orig || 'Submit';
+      btnEl.style.opacity = '1';
+    }
+  }
+
+  // ════════════════════════════════════════════════
+  //  FORM SUBMISSIONS
+  // ════════════════════════════════════════════════
+  async function submitForm(type, btnEl) {
+
+    // ── ATTENDEE ──
+    if (type === 'attendee') {
+      const panel    = document.getElementById('attendee');
+      const allInputs = panel.querySelectorAll('.form-layout input:not([type=checkbox]):not([type=file]), .form-layout select, .form-layout textarea');
+      const checkboxes = panel.querySelectorAll('.form-layout input[type=checkbox]');
+      const vals     = [...allInputs].map(i => i.value || '');
+
+      let competitions = '';
+      const compSel = panel.querySelector('#competition-select');
+      if (compSel && compSel.value === 'multiple') {
+        competitions = [...checkboxes].filter(c => c.checked).map(c => c.parentElement.textContent.trim()).join(', ');
+      } else {
+        competitions = compSel ? compSel.value : '';
+      }
+
+      let year = '', program = '', heardFrom = '';
+      panel.querySelectorAll('.form-layout select').forEach(sel => {
+        const lbl = sel.closest('.form-group')?.querySelector('label')?.textContent?.replace(' *','').trim().toLowerCase() || '';
+        if      (lbl.includes('year'))    year      = sel.value;
+        else if (lbl.includes('program')) program   = sel.value;
+        else if (lbl.includes('hear'))    heardFrom = sel.value;
+      });
+
+      const row = [Date.now(), new Date().toLocaleString(), vals[0], vals[1], vals[2], vals[3], vals[4], vals[5], year, program, competitions, heardFrom];
+
+      if (btnEl) setSubmitLoading(btnEl, true, 'Saving…');
+      try {
+        await appendToSheet(SHEETS.registrations, row, HEADERS.registrations);
+      } catch(e) {
+        if (btnEl) setSubmitLoading(btnEl, false);
+        alert('Error saving registration: ' + e.message); return;
+      }
+      if (btnEl) setSubmitLoading(btnEl, false);
+    }
+
+    // ── POSTER ──
+    else if (type === 'poster') {
+      const panel      = document.getElementById('poster');
+      const textInputs = panel.querySelectorAll('.form-layout input[type=text], .form-layout input[type=email]');
+      const textareas  = panel.querySelectorAll('.form-layout textarea');
+      const fileInput  = document.getElementById('poster-file');
+      let technicalArea = '';
+      panel.querySelectorAll('.form-layout select').forEach(sel => { technicalArea = sel.value; });
+      const posterFile = fileInput?.files?.[0] || null;
+
+      if (btnEl) setSubmitLoading(btnEl, true, posterFile ? 'Uploading file…' : 'Saving…');
+
+      let posterFileName = '', posterFileUrl = '';
+      try {
+        const result = await uploadFileToDrive(posterFile, 'poster-upload-bar', 'poster-upload-progress', 'poster-upload-status');
+        posterFileName = result.fileName;
+        posterFileUrl  = result.fileUrl;
+      } catch(e) {
+        console.warn('File upload failed, continuing without file:', e.message);
+        posterFileName = posterFile ? posterFile.name : '';
+      }
+
+      if (btnEl) setSubmitLoading(btnEl, true, 'Saving…');
+
+      const row = [
+        Date.now(), new Date().toLocaleString(),
+        textInputs[0]?.value || '', textInputs[1]?.value || '',
+        textInputs[2]?.value || '', textInputs[3]?.value || '',
+        textInputs[4]?.value || '', technicalArea,
+        textareas[0]?.value || '', textInputs[5]?.value || '',
+        posterFileName, posterFileUrl
+      ];
+
+      try {
+        await appendToSheet(SHEETS.posters, row, HEADERS.posters);
+      } catch(e) {
+        if (btnEl) setSubmitLoading(btnEl, false);
+        alert('Error saving poster submission: ' + e.message); return;
+      }
+      if (btnEl) setSubmitLoading(btnEl, false);
+    }
+
+    // ── PAPER ──
+    else if (type === 'paper') {
+      const panel      = document.getElementById('paper');
+      const textInputs = panel.querySelectorAll('.form-layout input[type=text], .form-layout input[type=email], .form-layout input[type=tel]');
+      const textareas  = panel.querySelectorAll('.form-layout textarea');
+      const fileInput  = document.getElementById('paper-file');
+      let year = '', track = '', pressPref = '';
+      panel.querySelectorAll('.form-layout select').forEach(sel => {
+        const lbl = sel.closest('.form-group')?.querySelector('label')?.textContent?.replace(' *','').trim().toLowerCase() || '';
+        if      (lbl.includes('year'))         year     = sel.value;
+        else if (lbl.includes('track'))        track    = sel.value;
+        else if (lbl.includes('presentation')) pressPref = sel.value;
+      });
+      const paperFile = fileInput?.files?.[0] || null;
+
+      if (btnEl) setSubmitLoading(btnEl, true, paperFile ? 'Uploading file…' : 'Saving…');
+
+      let paperFileName = '', paperFileUrl = '';
+      try {
+        const result = await uploadFileToDrive(paperFile, 'paper-upload-bar', 'paper-upload-progress', 'paper-upload-status');
+        paperFileName = result.fileName;
+        paperFileUrl  = result.fileUrl;
+      } catch(e) {
+        console.warn('File upload failed, continuing without file:', e.message);
+        paperFileName = paperFile ? paperFile.name : '';
+      }
+
+      if (btnEl) setSubmitLoading(btnEl, true, 'Saving…');
+
+      const row = [
+        Date.now(), new Date().toLocaleString(),
+        textInputs[0]?.value || '', textInputs[1]?.value || '',
+        textInputs[2]?.value || '', textInputs[3]?.value || '',
+        textInputs[4]?.value || '', year,
+        textInputs[5]?.value || '', track,
+        textareas[0]?.value || '', textareas[1]?.value || '',
+        pressPref, paperFileName, paperFileUrl
+      ];
+
+      try {
+        await appendToSheet(SHEETS.papers, row, HEADERS.papers);
+      } catch(e) {
+        if (btnEl) setSubmitLoading(btnEl, false);
+        alert('Error saving paper submission: ' + e.message); return;
+      }
+      if (btnEl) setSubmitLoading(btnEl, false);
+    }
+
+    // Show success
+    const successEl = document.getElementById(type + '-success');
+    if (successEl) {
+      successEl.classList.add('show');
+      successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+
+  // ════════════════════════════════════════════════
+  //  ADMIN PANEL
+  // ════════════════════════════════════════════════
+  function openAdmin() {
+    document.getElementById('admin-overlay').classList.add('open');
+    document.getElementById('admin-pw-input').value = '';
+    document.getElementById('admin-login-err').style.display = 'none';
+    document.getElementById('admin-login-screen').style.display = 'block';
+    document.getElementById('admin-dashboard').classList.remove('visible');
+  }
+  function closeAdmin() { document.getElementById('admin-overlay').classList.remove('open'); }
+  function adminLogin() {
+    if (document.getElementById('admin-pw-input').value === ADMIN_PASSWORD) {
+      document.getElementById('admin-login-screen').style.display = 'none';
+      document.getElementById('admin-dashboard').classList.add('visible');
+      renderDashboard();
+    } else {
+      document.getElementById('admin-login-err').style.display = 'block';
+    }
+  }
+
+  function esc(str) {
+    if (!str) return '';
+    return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+  function setTableLoading(tbodyId, colspan) {
+    document.getElementById(tbodyId).innerHTML =
+      `<tr><td colspan="${colspan}" class="admin-empty" style="color:var(--gold);">⏳ Loading…</td></tr>`;
+  }
+
+  async function renderDashboard() {
+    setTableLoading('reg-tbody', 12);
+    setTableLoading('poster-tbody', 11);
+    setTableLoading('paper-tbody', 14);
+    document.getElementById('stat-registrations').textContent = '…';
+    document.getElementById('stat-posters').textContent = '…';
+    document.getElementById('stat-papers').textContent = '…';
+
+    try {
+      const [regs, posters, papers] = await Promise.all([
+        readSheet(SHEETS.registrations),
+        readSheet(SHEETS.posters),
+        readSheet(SHEETS.papers)
+      ]);
+
+      document.getElementById('stat-registrations').textContent = regs.length;
+      document.getElementById('stat-posters').textContent       = posters.length;
+      document.getElementById('stat-papers').textContent        = papers.length;
+
+      document.getElementById('reg-tbody').innerHTML = regs.length === 0
+        ? '<tr><td colspan="12" class="admin-empty">No registrations yet.</td></tr>'
+        : regs.map((r,i) => `<tr>
+            <td>${i+1}</td>
+            <td style="white-space:nowrap;font-size:0.75rem;">${esc(r['Submitted'])}</td>
+            <td><strong style="color:var(--white)">${esc(r['Full Name'])}</strong></td>
+            <td>${esc(r['Student ID'])}</td><td>${esc(r['Email'])}</td><td>${esc(r['Phone'])}</td>
+            <td>${esc(r['University'])}</td><td>${esc(r['Department'])}</td>
+            <td>${esc(r['Year'])}</td><td>${esc(r['Program'])}</td>
+            <td>${esc(r['Competitions'])}</td><td>${esc(r['Heard From'])}</td>
+          </tr>`).join('');
+
+      document.getElementById('poster-tbody').innerHTML = posters.length === 0
+        ? '<tr><td colspan="11" class="admin-empty">No poster submissions yet.</td></tr>'
+        : posters.map((r,i) => `<tr>
+            <td>${i+1}</td>
+            <td style="white-space:nowrap;font-size:0.75rem;">${esc(r['Submitted'])}</td>
+            <td><strong style="color:var(--white)">${esc(r['Presenter Name'])}</strong></td>
+            <td>${esc(r['Email'])}</td><td>${esc(r['University'])}</td><td>${esc(r['Department'])}</td>
+            <td>${esc(r['Poster Title'])}</td><td>${esc(r['Technical Area'])}</td>
+            <td style="max-width:220px;font-size:0.78rem;color:var(--text-muted)">${esc(r['Abstract']).substring(0,120)}${(r['Abstract']||'').length>120?'…':''}</td>
+            <td>${esc(r['Co-Presenters'])}</td>
+            <td>${fileCell(r['File Name'], r['File URL'])}</td>
+          </tr>`).join('');
+
+      document.getElementById('paper-tbody').innerHTML = papers.length === 0
+        ? '<tr><td colspan="14" class="admin-empty">No paper submissions yet.</td></tr>'
+        : papers.map((r,i) => `<tr>
+            <td>${i+1}</td>
+            <td style="white-space:nowrap;font-size:0.75rem;">${esc(r['Submitted'])}</td>
+            <td><strong style="color:var(--white)">${esc(r['Lead Author'])}</strong></td>
+            <td>${esc(r['Email'])}</td><td>${esc(r['Phone'])}</td>
+            <td>${esc(r['University'])}</td><td>${esc(r['Department'])}</td><td>${esc(r['Year'])}</td>
+            <td>${esc(r['Paper Title'])}</td><td>${esc(r['Track'])}</td>
+            <td style="max-width:220px;font-size:0.78rem;color:var(--text-muted)">${esc(r['Abstract']).substring(0,120)}${(r['Abstract']||'').length>120?'…':''}</td>
+            <td>${esc(r['Co-Authors'])}</td><td>${esc(r['Presentation Pref'])}</td>
+            <td>${fileCell(r['File Name'], r['File URL'])}</td>
+          </tr>`).join('');
+
+    } catch(e) {
+      ['reg-tbody','poster-tbody','paper-tbody'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.innerHTML = `<tr><td colspan="14" class="admin-empty" style="color:#e06060;">⚠ Error: ${e.message}</td></tr>`;
+      });
+    }
+  }
+
+  function fileCell(fn, fu) {
+    if (!fn) return '<span style="color:var(--text-muted);font-size:0.75rem;">No file</span>';
+    if (fu)  return '<a class="dl-btn" href="'+fu+'" target="_blank">↓ '+esc(fn)+'</a>';
+    return '<span style="color:var(--text-muted);font-size:0.75rem;">📎 '+esc(fn)+'</span>';
+  }
+
+  async function exportCSV(type) {
+    const filename = type==='registrations' ? 'SPE_Registrations.csv' : type==='posters' ? 'SPE_PosterSubmissions.csv' : 'SPE_PaperSubmissions.csv';
+    let rows;
+    try {
+      const res  = await fetch(SCRIPT_URL + '?' + new URLSearchParams({ action:'read', sheet: SHEETS[type] }));
+      const data = await res.json();
+      rows = data.values || [];
+    } catch(e) { alert('Export failed: ' + e.message); return; }
+    if (rows.length <= 1) { alert('No data to export yet.'); return; }
+    const csv  = rows.map(row => row.map(cell => '"' + String(cell||'').replace(/"/g,'""') + '"').join(',')).join('\n');
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const a    = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = filename;
+    a.click();
+  }
+
+  async function clearData(type) {
+    if (!confirm('Permanently delete all ' + type + ' from Google Sheets? This cannot be undone.')) return;
+    try {
+      const res  = await fetch(SCRIPT_URL + '?' + new URLSearchParams({ action:'clear', sheet: SHEETS[type] }));
+      const data = await res.json();
+      if (data.status !== 'ok') throw new Error(data.message || 'Clear failed');
+      renderDashboard();
+    } catch(e) { alert('Clear failed: ' + e.message); }
+  }
+
+  // ── COUNTDOWN ──
+  function updateCountdown() {
+    const diff = new Date('2026-08-05T08:30:00') - new Date();
+    if (diff <= 0) {
+      document.getElementById('countdown').innerHTML = '<div style="color:var(--gold);font-family:\'Bebas Neue\',sans-serif;font-size:2rem;letter-spacing:0.1em;">Event In Progress!</div>';
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000)  / 60000);
+    const s = Math.floor((diff % 60000)    / 1000);
+    document.getElementById('cd-days').textContent  = String(d).padStart(2,'0');
+    document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-mins').textContent  = String(m).padStart(2,'0');
+    document.getElementById('cd-secs').textContent  = String(s).padStart(2,'0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
+</body>
+</html>
